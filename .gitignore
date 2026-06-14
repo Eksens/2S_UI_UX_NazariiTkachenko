@@ -97,3 +97,7 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+Assets/External.meta
+Assets/External/External Audio.meta
+Assets/External/External Audio/solarflex-no-copyright-music-2-541551.mp3
+Assets/External/External Audio/solarflex-no-copyright-music-2-541551.mp3.meta

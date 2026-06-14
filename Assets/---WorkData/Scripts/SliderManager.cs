@@ -1,14 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using UnityEngine.Audio;
 using TMPro;
 
 public class SliderManager : MonoBehaviour
 {
     [SerializeField] private Slider slider;
     [SerializeField] private TextMeshProUGUI valueText;
-    public void Update()
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private string mixerParameterName;
+
+    private void Awake()
     {
-        valueText.text = (Mathf.RoundToInt(slider.value * 100f)+"%");
+        slider = GetComponent<Slider>();
+    }
+
+    public void OnSliderValueChanged(float sliderValue)
+    {
+        valueText.text = Mathf.RoundToInt(sliderValue * 100f) + "%";
+        float clampedValue = Mathf.Clamp(sliderValue, 0.0001f, 1f);
+        float dB = Mathf.Log10(clampedValue) * 20;
+        audioMixer.SetFloat(mixerParameterName, dB);
     }
 }
